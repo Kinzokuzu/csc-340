@@ -20,11 +20,19 @@ void PrintStuct(StructuredPhoneNumber input)
 
 StructuredPhoneNumber phoneNumBreakdown(long long phoneNum_ll);
 
+bool operator==(StructuredPhoneNumber lhs, StructuredPhoneNumber rhs);
+
+//bool test1();
+//bool test2();
+//bool test3();
+
+bool test_operator1();
+//bool test_operator2();
 
 int main()
 {
   StructuredPhoneNumber test = phoneNumBreakdown(9254830830);
-  //PrintStuct(test);
+  std::cout << test_operator1() << std::endl;
   
   return 0;
 }
@@ -45,6 +53,23 @@ StructuredPhoneNumber phoneNumBreakdown(long long phoneNum_ll)
   result.areaCode = phoneNum_string.substr(0, 3);
   result.prefix = phoneNum_string.substr(3, 3);
   result.lineNo = phoneNum_string.substr(6);
+
+  return result;
+}
+
+// FIX ME
+bool operator==(StructuredPhoneNumber lhs, StructuredPhoneNumber rhs)
+{
+  bool result = true;
+
+  if (!lhs.areaCode.compare(rhs.areaCode))
+    result = false;
+  
+  if (!lhs.prefix.compare(rhs.prefix))
+    result = false;
+
+  if (!lhs.lineNo.compare(rhs.lineNo))
+    result = false;
 
   return result;
 }
