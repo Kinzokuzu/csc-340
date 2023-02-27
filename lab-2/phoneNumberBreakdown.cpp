@@ -6,7 +6,7 @@ struct StructuredPhoneNumber
 {
   std::string areaCode = "000";
   std::string prefix = "000";
-  std::string lineNo = "000";
+  std::string lineNo = "0000";
 };
 
 
