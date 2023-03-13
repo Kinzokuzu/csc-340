@@ -8,12 +8,18 @@
 
 namespace NS_TOKEN_FREQ
 {
-  bool operator<=(const TokenFreq& lhs, const TokenFreq& rhs)
+  struct TokenFreq
+  {
+    std::string token; // Holds the actual charater sequence of the token.
+    int freq;
+  };
+
+  bool operator<=(const struct TokenFreq& lhs, const struct TokenFreq& rhs)
   {
     return lhs.freq <= rhs.freq;
   }
 
-  TokenFreq operator+(const TokenFreq& lhs, const TokenFreq& rhs)
+  TokenFreq operator+(const struct TokenFreq& lhs, const struct TokenFreq& rhs)
   {
     return {lhs.token + " or " + rhs.token, lhs.freq + rhs.freq};
   }
@@ -24,11 +30,11 @@ namespace NS_TOKEN_FREQ
     return out;
   }
   // TO-DO: Implement me!
-  void getTokenFreqVec(std::string& istr, std::vector<TokenFreq>& tfVec);
+  //void getTokenFreqVec(std::string& istr, std::vector<TokenFreq>& tfVec);
   // TO-D0: Implement me!
-  void selectionSort(std::vector<TokenFreq>& tokFreqVector);
+  //void selectionSort(std::vector<TokenFreq>& tokFreqVector);
   // TO-DO: Implement me!
-  void insertionSort(std::vector<TokenFreq>& tokFreqVector);
+  //void insertionSort(std::vector<TokenFreq>& tokFreqVector);
 } // End namespace NS_TOKEN_FREQ
 
 #endif

@@ -3,6 +3,8 @@
 
 #include <vector>
 
+#include "matrixInit.cpp"
+
 namespace NS_MATRIX
 {
   // Creates a matrix of dimensionality numRows x numCols, where matrix
