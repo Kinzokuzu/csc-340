@@ -14,6 +14,16 @@ namespace NS_TOKEN_FREQ
     int freq;
   };
 
+  bool operator==(const struct TokenFreq& lhs, const struct TokenFreq& rhs)
+  {
+    bool result = lhs.token == rhs.token;
+
+    if(result)
+      result = lhs.freq == rhs.freq;
+
+    return result;
+  }
+
   bool operator<=(const struct TokenFreq& lhs, const struct TokenFreq& rhs)
   {
     return lhs.freq <= rhs.freq;
@@ -30,11 +40,11 @@ namespace NS_TOKEN_FREQ
     return out;
   }
   // TO-DO: Implement me!
-  //void getTokenFreqVec(std::string& istr, std::vector<TokenFreq>& tfVec);
+  void getTokenFreqVec(std::string& istr, std::vector<TokenFreq>& tfVec);
   // TO-D0: Implement me!
-  //void selectionSort(std::vector<TokenFreq>& tokFreqVector);
+  void selectionSort(std::vector<TokenFreq>& tokFreqVector);
   // TO-DO: Implement me!
-  //void insertionSort(std::vector<TokenFreq>& tokFreqVector);
+  void insertionSort(std::vector<TokenFreq>& tokFreqVector);
 } // End namespace NS_TOKEN_FREQ
 
 #endif

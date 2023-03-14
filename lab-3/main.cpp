@@ -13,5 +13,9 @@ int main()
   std::cout << NS_UNIT_TESTS::test2_operatorLE() << std::endl;
   std::cout << NS_UNIT_TESTS::test3_operatorLE() << std::endl;
 
+  std::cout << NS_UNIT_TESTS::test1_operatorPlus() << std::endl;
+  std::cout << NS_UNIT_TESTS::test2_operatorPlus() << std::endl;
+  std::cout << NS_UNIT_TESTS::test3_operatorPlus() << std::endl;
+
   return 0;
 }

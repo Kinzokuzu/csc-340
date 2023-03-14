@@ -13,7 +13,26 @@
  *   decreasing order of frequency.
  */
 /* Algorithm Design
- *
+ * 
+ * bool operator==(const struct TokenFreq& lhs, const struct TokenFreq& rhs);
+ * Step 1: Compare the token field from both lhs and rhs, if equal continue,
+ *         else return false.
+ * Step 2: Compate the frequency field from both lhs and rhs, if equal return
+ *         true, else return false.
+ * 
+ * bool operator<=(const struct TokenFreq& lhs, const struct TokenFreq& rhs);
+ * Step 1: Return whether the frequency field of lhs is <= to the frequency
+ *         field from rhs.
+ * 
+ * TokenFreq operator+(const struct TokenFreq& lhs, const struct TokenFreq& rhs);
+ * Step 1: Return the concatnation of the token field of lhs and rhs and the
+ *         addition of the frequency field of lhs and rhs.
+ * 
+ * std::ostream& operator<<(std::ostream& out, const TokenFreq obj);
+ * Step 1: Pass "(token, freq) = ([token field of object], [frequency
+ *         field of object])" to the out-stream object out.
+ * 
+ * void getTokenFreqVec(std::string& istr, std::vector<TokenFreq>& tfVec);
  */
 /* Test Cases
  *

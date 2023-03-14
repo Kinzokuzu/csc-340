@@ -61,9 +61,35 @@ namespace NS_UNIT_TESTS
     return token1 <= token2;
   }
 
-  bool test1_operatorPlus();
-  bool test2_operatorPlus();
-  bool test3_operatorPlus();
+  bool test1_operatorPlus()
+  {
+    NS_TOKEN_FREQ::TokenFreq intended = {"Left or Right", 2};
+    NS_TOKEN_FREQ::TokenFreq token1 = {"Left", 1};
+    NS_TOKEN_FREQ::TokenFreq token2 = {"Right", 1};
+    NS_TOKEN_FREQ::TokenFreq result = token1 + token2;
+
+    return intended == result;
+  }
+
+  bool test2_operatorPlus()
+  {
+    NS_TOKEN_FREQ::TokenFreq intended = {"Left Right", 2};
+    NS_TOKEN_FREQ::TokenFreq token1 = {"Left", 1};
+    NS_TOKEN_FREQ::TokenFreq token2 = {"Right", 1};
+    NS_TOKEN_FREQ::TokenFreq result = token1 + token2;
+
+    return !(intended == result);
+  }
+
+  bool test3_operatorPlus()
+  {
+    NS_TOKEN_FREQ::TokenFreq intended = {"Left or Right", 2};
+    NS_TOKEN_FREQ::TokenFreq token1 = {"Left", 1};
+    NS_TOKEN_FREQ::TokenFreq token2 = {"Right", 0};
+    NS_TOKEN_FREQ::TokenFreq result = token1 + token2;
+
+    return !(intended == result);
+  }
 
   bool test1_getTokeFreq();
   bool test2_getTokeFreq();

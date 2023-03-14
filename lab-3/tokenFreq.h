@@ -10,6 +10,10 @@ namespace NS_TOKEN_FREQ
 {
   struct TokenFreq;
 
+  // Compares whether both token and frequency fields are equal between two
+  // TokenFreq objects.
+  bool operator==(const struct TokenFreq& lhs, const struct TokenFreq& rhs);
+
   // Compares the frequency field of two TokenFreq objects. 
   bool operator<=(const struct TokenFreq& lhs, const struct TokenFreq& rhs);
 
@@ -24,17 +28,17 @@ namespace NS_TOKEN_FREQ
   // Creates of list of unique and case insensitive tokens, and their
   // correspoinding frequencies, identified withing the string istr, and
   // stores them in vector tfVec.
-  //void getTokenFreqVec(std::string& istr, std::vector<TokenFreq>& tfVec);
+  void getTokenFreqVec(std::string& istr, std::vector<TokenFreq>& tfVec);
 
   // This function receives a vector of TokenFreq objects by reference and
   // applies the selection sort algorithm to sort this vector in increasing
   // order of token frequencies.
-  //void selectionSort(std::vector<TokenFreq>& tokFreqVector);
+  void selectionSort(std::vector<TokenFreq>& tokFreqVector);
 
   // This function receives a vector of TokenFreq objects by reference and
   // applies the insertion sort algorithm to sort this vector in descending
   // order of token frequencies.
-  //void insertionSort(std::vector<TokenFreq>& tokFreqVector);
+  void insertionSort(std::vector<TokenFreq>& tokFreqVector);
 } // End namespace NS_TOKEN_FREQ
 
 #endif
