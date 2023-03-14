@@ -32,7 +32,21 @@
  * Step 1: Pass "(token, freq) = ([token field of object], [frequency
  *         field of object])" to the out-stream object out.
  * 
+ * std::string getToken(const std::string& input);
+ * While there are still characters in input:
+ *   While the current character is not a space:
+ *     Add the current charater to the end of the current word.
+ *   R
+ * 
  * void getTokenFreqVec(std::string& istr, std::vector<TokenFreq>& tfVec);
+ * Step 1: While there are words in istr, check whether this word (case
+ *         insensitive) has been encountered previously:
+ *         1a) If it has, add 1 to the frequency of times this word has been
+ *             encountered, move on to the next word.
+ *         1b) If it hasn't, add this word to a list of words (tokens) and
+ *             increases it ecounter frequency by 1.
+ * Note: Words (tokens) and their frequency's are to be stored in the function
+ *       parameter tfVec.
  */
 /* Test Cases
  *

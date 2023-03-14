@@ -2,8 +2,11 @@
 #define TOKENFREQ_CPP
 
 #include <algorithm>
+#include <cctype>
 #include <iostream>
 #include <string>
+#include <unordered_map>
+
 #include "tokenFreq.h"
 
 namespace NS_TOKEN_FREQ
@@ -39,8 +42,45 @@ namespace NS_TOKEN_FREQ
     out << "(token, freq) = (" << obj.token << ", " << obj.freq << ")";
     return out;
   }
-  // TO-DO: Implement me!
-  void getTokenFreqVec(std::string& istr, std::vector<TokenFreq>& tfVec);
+  // I don't like this implementation.  CHANGE IT!!!
+  void getTokenFreqVec(std::string& istr, std::vector<TokenFreq>& tfVec)
+  {
+    std::unordered_map<std::string, int> token_map;
+  
+    std::string current_word{""};
+    bool in_word{false};
+
+    for (auto i : istr)
+    {
+      // Our tokens (words) will be bounded by a space character (' ').
+      if (i == ' ')
+      {
+        in_word = false;
+      }
+      else
+      {
+        in_word = true;
+      }
+
+      if (in_word)
+      {
+        current_word.push_back(i); 
+      }
+      else
+      {
+        // Turn the current word into all lowercase characters
+        for (char& c : current_word)
+        {
+          c = std::tolower(c);
+        }
+
+        if (token_map.contains(current_word))
+          token_map.at(current_word)++;
+        else
+          token_map[current_word] = 1;
+      }
+    }
+  }
   // TO-D0: Implement me!
   void selectionSort(std::vector<TokenFreq>& tokFreqVector);
   // TO-DO: Implement me!
