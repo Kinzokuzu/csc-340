@@ -4,7 +4,9 @@
 #include <algorithm>
 #include <cctype>
 #include <iostream>
+#include <sstream>
 #include <string>
+#include <vector>
 #include <unordered_map>
 
 #include "tokenFreq.h"
@@ -42,49 +44,75 @@ namespace NS_TOKEN_FREQ
     out << "(token, freq) = (" << obj.token << ", " << obj.freq << ")";
     return out;
   }
-  // I don't like this implementation.  CHANGE IT!!!
+
   void getTokenFreqVec(std::string& istr, std::vector<TokenFreq>& tfVec)
   {
     std::unordered_map<std::string, int> token_map;
-  
-    std::string current_word{""};
-    bool in_word{false};
+    std::stringstream ss(istr);
+    std::string token{""};
 
-    for (auto i : istr)
+    while (ss >> token)
     {
-      // Our tokens (words) will be bounded by a space character (' ').
-      if (i == ' ')
+      for (char& c : token)
       {
-        in_word = false;
-      }
-      else
-      {
-        in_word = true;
+        c = std::tolower(c);
       }
 
-      if (in_word)
+      if (token_map.find(token) != token_map.end())
       {
-        current_word.push_back(i); 
+        token_map[token]++;
       }
       else
       {
-        // Turn the current word into all lowercase characters
-        for (char& c : current_word)
+        token_map[token] = 1;
+      }
+    }
+
+    TokenFreq tf;
+    for (const auto& [key, value] : token_map)
+    {
+      tf.token = key;
+      tf.freq = value;
+
+      tfVec.push_back(tf);
+    }
+  }
+
+  void selectionSort(std::vector<TokenFreq>& tokFreqVector)
+  {
+    TokenFreq temp_tf;
+
+    for (auto i : tokFreqVector)
+    {
+      for (auto j : tokFreqVector)
+      {
+        if (j <= i)
         {
-          c = std::tolower(c);
+          temp_tf = i;
+          i = j;
+          j = i;
         }
-
-        if (token_map.contains(current_word))
-          token_map.at(current_word)++;
-        else
-          token_map[current_word] = 1;
       }
     }
   }
-  // TO-D0: Implement me!
-  void selectionSort(std::vector<TokenFreq>& tokFreqVector);
-  // TO-DO: Implement me!
-  void insertionSort(std::vector<TokenFreq>& tokFreqVector);
+  // Algorithm for insertionSort() was given by algolist.net 
+  void insertionSort(std::vector<TokenFreq>& tokFreqVector)
+  {
+    int i, j;
+    NS_TOKEN_FREQ::TokenFreq temp;
+
+    for (i = 1; i < tokFreqVector.size(); i++)
+    {
+      j = i;
+      while (j > 0 && tokFreqVector.at(j - 1) <= tokFreqVector.at(j))
+      {
+        temp = tokFreqVector.at(j);
+        tokFreqVector.at(j) = tokFreqVector.at(j - 1);
+        tokFreqVector.at(j - 1);
+        j--;
+      }
+    }
+  }
 } // End namespace NS_TOKEN_FREQ
 
 #endif

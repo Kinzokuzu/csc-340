@@ -91,7 +91,50 @@ namespace NS_UNIT_TESTS
     return !(intended == result);
   }
 
-  bool test1_getTokeFreq();
-  bool test2_getTokeFreq();
-  bool test3_getTokeFreq();
+  bool test1_getTokeFreq()
+  {
+    std::vector<NS_TOKEN_FREQ::TokenFreq> test_vector;
+    std::string input = "Hello brother I am John john I am very happy";
+
+    NS_TOKEN_FREQ::getTokenFreqVec(input, test_vector);
+
+    return !test_vector.empty();
+  }
+
+  bool test2_getTokeFreq()
+  {
+    std::vector<NS_TOKEN_FREQ::TokenFreq> test_vector;
+    std::string input = " ";
+
+    NS_TOKEN_FREQ::getTokenFreqVec(input, test_vector);
+
+    return test_vector.empty();
+  }
+
+  bool test3_getTokeFreq()
+  {
+    std::vector<NS_TOKEN_FREQ::TokenFreq> test_vector;
+    std::string input = "Hello World hello world bYe WoRlD";
+    std::vector<NS_TOKEN_FREQ::TokenFreq> result_vector;
+    // Initialization of result_vector.    
+    NS_TOKEN_FREQ::TokenFreq temp{"bye", 1};
+    result_vector.push_back(temp);
+    temp = {"world", 3};
+    result_vector.push_back(temp);
+    temp = {"hello", 2};
+    result_vector.push_back(temp);
+
+    NS_TOKEN_FREQ::getTokenFreqVec(input, test_vector);
+
+    bool result = true;
+    for (int i = 0; i < result_vector.size(); i++)
+    {
+      if (result)
+      {
+        result = test_vector.at(i) == result_vector.at(i);
+      }
+    }
+
+    return result;
+  }
 } // End NS_UNIT_TESTS

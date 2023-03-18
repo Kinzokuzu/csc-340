@@ -33,20 +33,25 @@
  *         field of object])" to the out-stream object out.
  * 
  * std::string getToken(const std::string& input);
- * While there are still characters in input:
- *   While the current character is not a space:
- *     Add the current charater to the end of the current word.
- *   R
  * 
  * void getTokenFreqVec(std::string& istr, std::vector<TokenFreq>& tfVec);
- * Step 1: While there are words in istr, check whether this word (case
- *         insensitive) has been encountered previously:
- *         1a) If it has, add 1 to the frequency of times this word has been
- *             encountered, move on to the next word.
- *         1b) If it hasn't, add this word to a list of words (tokens) and
- *             increases it ecounter frequency by 1.
- * Note: Words (tokens) and their frequency's are to be stored in the function
- *       parameter tfVec.
+ *   Let token be a string of characters.
+ *   Let c be the first character of istr.
+ *   Let token_map be a key, value pair of key:string and value:integer.
+ * 
+ *   While there are still characters in istr, iterate through istr:
+ *     If c is equal to an empty space:
+ *       If token exists in token_map:
+ *         Increase the frequency of token in token_map by 1
+ *       Else:
+ *         Create a new element in token_map of key:token, value:1
+ *       Clear token
+ *     Else:
+ *       Append c to token
+ *   (End loop)
+ *
+ *   Pass the elements of token_map to tfVec as TokenFreq objects.
+ *   (End algorithm)
  */
 /* Test Cases
  *
