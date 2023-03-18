@@ -137,4 +137,112 @@ namespace NS_UNIT_TESTS
 
     return result;
   }
+
+  bool test1_selectionSort()
+  {
+    std::string input = "one, two, three";
+    std::vector<NS_TOKEN_FREQ::TokenFreq> tv;
+
+    NS_TOKEN_FREQ::getTokenFreqVec(input, tv);
+    NS_TOKEN_FREQ::selectionSort(tv);
+
+    bool result = true;
+    for (int i = 0; i < tv.size() - 1; i++)
+    {
+      if (result)
+        result = tv.at(i) <= tv.at(i + 1);
+    } 
+
+    return result;
+  }
+
+  bool test2_selectionSort()
+  {
+    std::string input = "one, two, three, two, one, one";
+    std::vector<NS_TOKEN_FREQ::TokenFreq> tv;
+
+    NS_TOKEN_FREQ::getTokenFreqVec(input, tv);
+    NS_TOKEN_FREQ::selectionSort(tv);
+
+    bool result = true;
+    for (int i = 0; i < tv.size() - 1; i++)
+    {
+      if (result)
+        result = tv.at(i) <= tv.at(i + 1);
+    } 
+
+    return result;
+  }
+
+  bool test3_selectionSort()
+  {
+    std::string input = "one";
+    std::vector<NS_TOKEN_FREQ::TokenFreq> tv;
+
+    NS_TOKEN_FREQ::getTokenFreqVec(input, tv);
+    NS_TOKEN_FREQ::selectionSort(tv);
+
+    bool result = true;
+    for (int i = 0; i < tv.size() - 1; i++)
+    {
+      if (result)
+        result = tv.at(i) <= tv.at(i + 1);
+    } 
+
+    return result;
+  }
+
+  bool test1_insertionSort()
+  {
+    std::string input = "one, two, three";
+    std::vector<NS_TOKEN_FREQ::TokenFreq> tv;
+
+    NS_TOKEN_FREQ::getTokenFreqVec(input, tv);
+    NS_TOKEN_FREQ::insertionSort(tv);
+
+    bool result = true;
+    for (int i = 0; i < tv.size() - 1; i++)
+    {
+      if (result)
+        result = tv.at(i + 1) <= tv.at(i);
+    } 
+
+    return result;
+  }
+
+  bool test2_insertionSort()
+  {
+    std::string input = "one, two, three, two, one, one";
+    std::vector<NS_TOKEN_FREQ::TokenFreq> tv;
+
+    NS_TOKEN_FREQ::getTokenFreqVec(input, tv);
+    NS_TOKEN_FREQ::insertionSort(tv);
+
+    bool result = true;
+    for (int i = 0; i < tv.size() - 1; i++)
+    {
+      if (result)
+        result = tv.at(i + 1) <= tv.at(i);
+    } 
+
+    return result;
+  }
+
+  bool test3_insertionSort()
+  {
+    std::string input = "one";
+    std::vector<NS_TOKEN_FREQ::TokenFreq> tv;
+
+    NS_TOKEN_FREQ::getTokenFreqVec(input, tv);
+    NS_TOKEN_FREQ::insertionSort(tv);
+
+    bool result = true;
+    for (int i = 0; i < tv.size() - 1; i++)
+    {
+      if (result)
+        result = tv.at(i + 1) <= tv.at(i);
+    } 
+
+    return result;
+  }
 } // End NS_UNIT_TESTS

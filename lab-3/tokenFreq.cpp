@@ -80,6 +80,8 @@ namespace NS_TOKEN_FREQ
 
   void selectionSort(std::vector<TokenFreq>& tokFreqVector)
   {
+    if (tokFreqVector.size() <= 1) return;
+
     TokenFreq temp_tf;
 
     for (auto i : tokFreqVector)
@@ -98,6 +100,8 @@ namespace NS_TOKEN_FREQ
   // Algorithm for insertionSort() was given by algolist.net 
   void insertionSort(std::vector<TokenFreq>& tokFreqVector)
   {
+    if (tokFreqVector.size() <= 1) return;
+
     int i, j;
     NS_TOKEN_FREQ::TokenFreq temp;
 

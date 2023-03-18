@@ -21,5 +21,13 @@ int main()
   std::cout << NS_UNIT_TESTS::test2_getTokeFreq() << std::endl;
   std::cout << NS_UNIT_TESTS::test3_getTokeFreq() << std::endl;
 
+  std::cout << NS_UNIT_TESTS::test1_selectionSort() << std::endl;
+  std::cout << NS_UNIT_TESTS::test2_selectionSort() << std::endl;
+  std::cout << NS_UNIT_TESTS::test3_selectionSort() << std::endl;
+
+  std::cout << NS_UNIT_TESTS::test1_insertionSort() << std::endl;
+  std::cout << NS_UNIT_TESTS::test2_insertionSort() << std::endl;
+  std::cout << NS_UNIT_TESTS::test3_insertionSort() << std::endl;
+
   return 0;
 }
