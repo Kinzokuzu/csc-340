@@ -29,10 +29,28 @@
 
 /* Algorithms
  *
- * curateArtwork()
+ * curateArtwork() | Time complexity: O(n)
+ * (Start)
+ *   If artist does not exist:
+ *     Generate a new artist ID
+ *     Add artist to artist list
+ *   Add artist to artwork
+ *   Add artwork to artworkListCurated and artworkListForSale
+ *   Create new curation
+ *   Add curation to curationRecords
+ * (End)
  *
- *
- * sellArtwork()
+ * sellArtwork() | Time complexity: O(n)
+ * (Start)
+ *   If artwork is not for sale, return
+ *   If customer does not exist:
+ *     Generate a new customer ID
+ *     Add customer to customer list
+ *   Remove artwork from artworkListForSale
+ *   Create new sale
+ *   Add sale to salesRecords
+ * (End)
+ *     
  *
  *
  * genArtworksReport()

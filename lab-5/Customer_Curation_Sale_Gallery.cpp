@@ -191,10 +191,50 @@ int Gallery::addCustomer(Customer customer) {
 }
 
 
-void Gallery::curateArtwork(Artwork newItem, Artist artist) {}
+void Gallery::curateArtwork(Artwork newItem, Artist artist) {
+  // Return existing artist's ID or create a new one
+  int artistID = getArtistID(artist.getName(), artist.getEmail());
+  
+  if (artistID < 0) {
+    artist.setID(uniqueIDs::next_artistID());
+    artistID = artist.getID();
+    artistsList.push_back(artist);
+  }
+
+  newItem.setArtistID(artistID);
+  artworksCurated.push_back(newItem);
+  artworksForSale.push_back(newItem);
+
+  Curation newCuration = Curation(newItem.getID(), artistID, getTodaysDate());
+  addCuration(newCuration);
+}
 
 
-void Gallery::sellArtwork(int artworkID, Customer customer) {}
+void Gallery::sellArtwork(int artworkID, Customer customer) {
+  bool foundArtwork = false;
+  int artworkPos;
+  for (unsigned int i = 0; i < num_artworksForSale(); i++) {
+    if (artworksForSale.at(i).getID() == artworkID) {
+      foundArtwork = true;
+      artworkPos = i;
+      break;  
+    } 
+  }
+
+  if (!foundArtwork) return;
+
+  artworksForSale.erase(artworksForSale.begin() + artworkPos);
+
+  int customerID = getCustomerID(customer.getName(), customer.getEmail());
+  if (customerID < 0) {
+    customer.setID(uniqueIDs::next_customerID());
+    customerID = customer.getID();
+    customersList.push_back(customer);
+  }
+
+  Sale newSale = Sale(customerID, artworkID, getTodaysDate());
+  addSale(newSale);
+}
 
 
 void Gallery::addCuration(Curation curation) {
