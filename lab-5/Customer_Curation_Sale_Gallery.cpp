@@ -123,11 +123,37 @@ int Gallery::getArtistID(std::string name, std::string email) const {
   return foundID;
 }
 
-int Gallery::getCustomerID(std::string name, std::string email) const {}
+int Gallery::getCustomerID(std::string name, std::string email) const {
+  int foundID = -1;
 
-std::vector<int> Gallery::getIDsOfArtworksForSale() const {}
+  for (const auto &c : customersList) {
+    if (c.getName() == name && c.getEmail() == email) {
+      foundID = c.getID();
+    }
+  }
 
-std::vector<int> Gallery::getIDsOfArtistsForSale() const {}
+  return foundID;
+}
+
+std::vector<int> Gallery::getIDsOfArtworksForSale() const {
+  std::vector<int> listOfArtworkIDs;
+
+  for (const auto &a : artworksForSale) {
+    listOfArtworkIDs.push_back(a.getID());
+  }
+
+  return listOfArtworkIDs;
+}
+
+std::vector<int> Gallery::getIDsOfArtistsForSale() const {
+  std::vector<int> listOfArtistIDs;
+
+  for (const auto &a : artworksForSale) {
+    listOfArtistIDs.push_back(a.getArtistID());
+  }
+
+  return listOfArtistIDs;
+}
 
 
 std::vector<std::pair<std::string, int>> Gallery::genArtworksReport(ReportType reportType) {}
@@ -139,10 +165,30 @@ void Gallery::setAddress(std::string theAddr) { address = theAddr; }
 void Gallery::setWebURL(std::string theURL) { webURL = theURL; }
 
 
-int Gallery::addArtist(Artist artist) {}
+int Gallery::addArtist(Artist artist) {
+  int artistID = getArtistID(artist.getName(), artist.getEmail());
+  // artistID = -1 if artist does not exist
+  if (artistID < 0) {
+    artist.setID(next_artistID());
+    artistID = artist.getID();
+    artistsList.push_back(artist);
+  }
+
+  return artistID;
+}
 
 
-int Gallery::addCustomer(Customer customer) {}
+int Gallery::addCustomer(Customer customer) {
+  int customerID = getCustomerID(customer.getName(), customer.getEmail());
+
+  if (customerID < 0) {
+    customer.setID(next_customerID());
+    customerID = customer.getID();
+    customersList.push_back(customer);
+  }
+
+  return customerID;
+}
 
 
 void Gallery::curateArtwork(Artwork newItem, Artist artist) {}
@@ -151,9 +197,21 @@ void Gallery::curateArtwork(Artwork newItem, Artist artist) {}
 void Gallery::sellArtwork(int artworkID, Customer customer) {}
 
 
-void Gallery::addCuration(Curation curation) {}
+void Gallery::addCuration(Curation curation) {
+  if (curation.getArtwordID() > 0) {
+    curationRecords.push_back(curation);
+  }
+
+  return;
+}
 
 
-void Gallery::addSale(Sale sale) {}
+void Gallery::addSale(Sale sale) {
+  if(sale.getCusomerID() > 0) {
+    salesRecords.push_back(sale);
+  }
+
+  return;
+}
 // End class Gallery
 }//end of NS_ARTGALLERY
