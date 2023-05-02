@@ -51,7 +51,5 @@
  *   Add sale to salesRecords
  * (End)
  *     
- *
- *
  * genArtworksReport()
 */

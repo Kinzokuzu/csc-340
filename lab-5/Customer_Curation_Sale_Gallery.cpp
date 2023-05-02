@@ -156,7 +156,105 @@ std::vector<int> Gallery::getIDsOfArtistsForSale() const {
 }
 
 
-std::vector<std::pair<std::string, int>> Gallery::genArtworksReport(ReportType reportType) {}
+std::vector<std::pair<std::string, int>> Gallery::genArtworksReport(ReportType reportType) {
+  std::vector<std::pair<std::string, int>> report;
+
+  if (reportType == ReportType::artType) {
+    std::pair<std::string, int> painting("painting", 0);
+    std::pair<std::string, int> photography("photography", 0);
+    std::pair<std::string, int> drawing("drawing", 0);
+    std::pair<std::string, int> sculpture("sculpture", 0);
+    std::pair<std::string, int> other("other", 0);
+
+    for (const auto &a : artworksCurated) {
+      if (toStr_ArtType(a.getType()) == "painting") {
+        painting.second++;
+      }
+      else if (toStr_ArtType(a.getType()) == "photography") {
+        photography.second++;
+      }
+      else if (toStr_ArtType(a.getType()) == "drawing") {
+        drawing.second++;
+      }
+      else if (toStr_ArtType(a.getType()) == "sculpture") {
+        sculpture.second++;
+      }
+      else if (toStr_ArtType(a.getType()) == "other") {
+        other.second++;
+      }
+    }
+
+    report.push_back(painting);
+    report.push_back(photography);
+    report.push_back(drawing);
+    report.push_back(sculpture);
+    report.push_back(other);
+  }
+  else if (reportType == ReportType::artStyle) {
+    std::pair<std::string, int> fineArt("fineArt", 0);
+    std::pair<std::string, int> abstract("abstract", 0);
+    std::pair<std::string, int> modern("modern", 0);
+    std::pair<std::string, int> popArt("popArt", 0);
+    std::pair<std::string, int> other("other", 0);
+
+    for (const auto &a : artworksCurated) {
+      if (toStr_ArtStyle(a.getStyle()) == "fineArt") {
+        fineArt.second++;
+      }
+      else if (toStr_ArtStyle(a.getStyle()) == "abstract") {
+        abstract.second++;
+      }
+      else if (toStr_ArtStyle(a.getStyle()) == "modern") {
+        modern.second++;
+      }
+      else if (toStr_ArtStyle(a.getStyle()) == "popArt") {
+        popArt.second++;
+      }
+      else if (toStr_ArtStyle(a.getStyle()) == "other") {
+        other.second++;
+      }
+    }
+
+    report.push_back(fineArt);
+    report.push_back(abstract);
+    report.push_back(modern);
+    report.push_back(popArt);
+    report.push_back(other);
+  }
+  else if (reportType == ReportType::artSubject) {
+    std::pair<std::string, int> nature("nature", 0);
+    std::pair<std::string, int> portrait("portrait", 0);
+    std::pair<std::string, int> animal("animal", 0);
+    std::pair<std::string, int> cartoon("cartoon", 0);
+    std::pair<std::string, int> other("other", 0);
+
+    for (const auto &a : artworksCurated) {
+      if (toStr_ArtSubject(a.getSubject()) == "nature") {
+        nature.second++;
+      }
+      else if (toStr_ArtSubject(a.getSubject()) == "portrait") {
+        portrait.second++;
+      }
+      else if (toStr_ArtSubject(a.getSubject()) == "animal") {
+        animal.second++;
+      }
+      else if (toStr_ArtSubject(a.getSubject()) == "cartoon") {
+        cartoon.second++;
+      }
+      else if (toStr_ArtSubject(a.getSubject()) == "other") {
+        other.second++;
+      }
+    }
+
+    report.push_back(nature);
+    report.push_back(portrait);
+    report.push_back(animal);
+    report.push_back(cartoon);
+    report.push_back(other);
+  }
+
+  return report;
+}
 
 // Gallery setters
 void Gallery::setID(int theID) { ID = theID; }
