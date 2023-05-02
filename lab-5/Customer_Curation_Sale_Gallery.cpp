@@ -169,7 +169,7 @@ int Gallery::addArtist(Artist artist) {
   int artistID = getArtistID(artist.getName(), artist.getEmail());
   // artistID = -1 if artist does not exist
   if (artistID < 0) {
-    artist.setID(next_artistID());
+    artist.setID(uniqueIDs::next_artistID());
     artistID = artist.getID();
     artistsList.push_back(artist);
   }
@@ -182,7 +182,7 @@ int Gallery::addCustomer(Customer customer) {
   int customerID = getCustomerID(customer.getName(), customer.getEmail());
 
   if (customerID < 0) {
-    customer.setID(next_customerID());
+    customer.setID(uniqueIDs::next_customerID());
     customerID = customer.getID();
     customersList.push_back(customer);
   }
@@ -198,8 +198,8 @@ void Gallery::sellArtwork(int artworkID, Customer customer) {}
 
 
 void Gallery::addCuration(Curation curation) {
-  if (curation.getArtwordID() > 0) {
-    curationRecords.push_back(curation);
+  if (curation.getArtworkID() > 0) {
+    curationsRecords.push_back(curation);
   }
 
   return;
@@ -207,7 +207,7 @@ void Gallery::addCuration(Curation curation) {
 
 
 void Gallery::addSale(Sale sale) {
-  if(sale.getCusomerID() > 0) {
+  if(sale.getCustomerID() > 0) {
     salesRecords.push_back(sale);
   }
 
