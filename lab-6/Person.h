@@ -24,7 +24,7 @@ public:
     Person(); //0->SSN, "na"->name, "personal@"->personalEmail, 10->cntPlaces,
               //allocate space to placesVisited and initializes each place to
               //"unknown"
-    Person& operator=(const Person& rhs );
+    Person operator=(const Person& rhs );
     //copy constructor
     Person( const Person &clone );
     
