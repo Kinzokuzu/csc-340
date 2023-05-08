@@ -19,6 +19,9 @@ public:
     //This interface is by no means complete.  Please feel free to
     // add more functions if needed. The test cases however will only
     // test the following functions.
+    //
+    // Used to compare two Person obj    
+    bool isEqual(const Person &obj);
     
     virtual ~Person();
     Person(); //0->SSN, "na"->name, "personal@"->personalEmail, 10->cntPlaces,
@@ -35,7 +38,6 @@ public:
     virtual string getEmail() const; //return personalEmail
     virtual void setEmail( string new_email); //new_email-->personalEmail
     virtual string getTypeOfObj() const; //return "Person"
-    
 
 private:
     int SSN;
