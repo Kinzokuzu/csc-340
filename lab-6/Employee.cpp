@@ -21,7 +21,7 @@ Employee::Employee() {
   cnt_sal_changes = 10;
   work_email = "work@";
   
-  // Allocate memroy for 10 rates
+  // Allocate memory for 10 rates
   sal_change_rates = new double[10];
   // Initialize all rates to 0.0
   for (int i = 0; i < 10; i++) {
@@ -31,7 +31,7 @@ Employee::Employee() {
 
 bool Employee::isEqual(const Employee &obj) {
   bool result = true;
-  // Call parant isEqual()
+  // Call parent isEqual()
   result = this->Person::isEqual(obj);
 
   if (this->salary != obj.salary)
@@ -41,7 +41,7 @@ bool Employee::isEqual(const Employee &obj) {
   if (this->cnt_sal_changes != obj.cnt_sal_changes) {
     result = false;
   } else { // No need to compare is count isn't equal
-    for (int i = 0; i < this->cnt_sal_changes && result == true; i++) {
+    for (int i = 0; i < this->cnt_sal_changes && result; i++) {
       if (this->sal_change_rates[i] != obj.sal_change_rates[i])
         result = false;
       }
@@ -60,7 +60,7 @@ double Employee::getChangeRate(int i) const { return sal_change_rates[i]; }
 std::string Employee::getEmail() const { return work_email; }
 
 void Employee::setEmail(std::string new_email) {
-  work_email = new_email;
+  work_email = std::move(new_email);
 }
 
 std::string Employee::getTypeOfObj() const { return "Employee"; }

@@ -28,7 +28,7 @@ public:
     // Used to compare two Person obj    
     bool isEqual(const Person &obj);
     // FIX ME: Return type should be Person    
-    void operator=(const Person& rhs );
+    Person operator=(const Person& rhs );
     //copy constructor
     Person( const Person &clone );
     
