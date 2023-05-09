@@ -2,35 +2,14 @@
 //  Person.cpp
 //  InheritancePolymorphism-codingLab
 //
-//  Created by ...
-//
+//  Created by Saul Cervantes-Hernandez
+//  May 10, 2023
 
 #include "Person.h"
 
 namespace NS_PersonEmployee{
 
 //implement each of the member functions included in the Person class
-bool Person::isEqual(const Person &obj) {
-  bool result = true;
-
-  if (this->SSN != obj.SSN)
-    result = false;
-  if (this->name != obj.name)
-    result = false;
-  if (this->personalEmail != obj.personalEmail)
-    result = false;
-  if (this->cntPlaces != obj.cntPlaces) {
-    result = false;
-  } else {
-    for (int i = 0; i < this->cntPlaces; i++) {
-      if (this->placesVisited[i] != obj.placesVisited[i])
-        result = false;
-    }
-  }
-
-  return result;
-}
-
 Person::~Person() {
   delete[] placesVisited;
 }
@@ -48,7 +27,29 @@ Person::Person() {
   }
 }
 
-Person Person::operator=(const Person& rhs) {
+bool Person::isEqual(const Person &obj) {
+  bool result = true;
+  
+  // Compare each field in Person
+  if (this->SSN != obj.SSN)
+    result = false;
+  if (this->name != obj.name)
+    result = false;
+  if (this->personalEmail != obj.personalEmail)
+    result = false;
+  if (this->cntPlaces != obj.cntPlaces) {
+    result = false;
+  } else { // No need to compare if count isn't equal
+    for (int i = 0; i < this->cntPlaces; i++) {
+      if (this->placesVisited[i] != obj.placesVisited[i])
+        result = false;
+    }
+  }
+
+  return result;
+}
+// FIX ME: Return type should be Person
+void Person::operator=(const Person& rhs) {
   // DO NOT self-assign
   if (!this->isEqual(rhs)) {
     SSN = rhs.SSN;
@@ -92,5 +93,16 @@ std::string Person::getEmail() const { return personalEmail; }
 void Person::setEmail(std::string new_email) { personalEmail = new_email; }
 
 std::string Person::getTypeOfObj() const { return "Person"; }
+
+void Person::printObj() const {
+  std::cout << "SSN: " << this->SSN
+            << "\nname: " << this->name
+            << "\npersonalEmail: " << this->personalEmail
+            << "\ncntPlaces: " << this->cntPlaces << std::endl;
+  // FIX ME: Segmentation fault occuring here
+  for (int i = 0; i < this->cntPlaces; i++) {
+    std::cout << i << ": " << this->placesVisited[i] << std::endl;
+  }
+}
 
 }//end-of namespace NS_PersonEmployee

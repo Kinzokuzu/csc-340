@@ -23,6 +23,7 @@ public:
     Employee(); //0.0->salary, 10->cnt_sal_changes, "work@"->work_email,
                 //sal_change_rates: allocate memory to hold 10 doubles,
                 //each of which has an initial value of 0.0
+    bool isEqual(const Employee &obj);
     Employee( const Employee& clone);
     Employee operator=(const Employee& rhs );
     
@@ -34,7 +35,7 @@ public:
     virtual void setEmail( string new_email); //new_email-->work_email
     virtual string getTypeOfObj() const; //return "Employee"
     
-    
+    void printObj();
 };
 
 

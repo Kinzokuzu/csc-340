@@ -20,14 +20,15 @@ public:
     // add more functions if needed. The test cases however will only
     // test the following functions.
     //
-    // Used to compare two Person obj    
-    bool isEqual(const Person &obj);
-    
     virtual ~Person();
     Person(); //0->SSN, "na"->name, "personal@"->personalEmail, 10->cntPlaces,
               //allocate space to placesVisited and initializes each place to
               //"unknown"
-    Person operator=(const Person& rhs );
+              
+    // Used to compare two Person obj    
+    bool isEqual(const Person &obj);
+    // FIX ME: Return type should be Person    
+    void operator=(const Person& rhs );
     //copy constructor
     Person( const Person &clone );
     
@@ -38,6 +39,8 @@ public:
     virtual string getEmail() const; //return personalEmail
     virtual void setEmail( string new_email); //new_email-->personalEmail
     virtual string getTypeOfObj() const; //return "Person"
+
+    virtual void printObj() const;
 
 private:
     int SSN;

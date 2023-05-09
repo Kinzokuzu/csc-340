@@ -48,16 +48,71 @@ bool test_PersonDCon() {
 
   return result;
 }
+
 //bool test_PersonCCon();  //test the copy constructor of Person
+inline
+bool test_PersonCCon() {
+  Person person1;
+  person1.setEmail("test@mail");
+  Person person2(person1);
+
+  return person2.isEqual(person1);
+}
+
 //bool test_PersonCAssign(); //test the copy assignment operator of Person
+inline
+bool test_PersonCAssign() {
+  Person person1;
+  person1.setEmail("test@mail");
+  Person person2 = person1;
 
-
+  return person2.isEqual(person1);
+}
 
 //include the following unit tests for Employee class.
 
 //bool test_EmployeeDCon(); //test the default constructor Employee
+inline
+bool test_EmployeeDCon() {
+  bool result = true;
+
+  Employee employee1;
+  if (employee.work_email != "work@")
+    result = false;
+  if (employee.salary !- 0.0)
+    result = false;
+  if (cnt_sal_changes != 10)
+    result = false;
+
+  // Checking each initialized sal_change_rate
+  for (int i = 0; i < employee1.cnt_sal_changes; i++) {
+    if (employee1.sal_change_rates[i] != 0.0)
+      result = false;
+  }
+
+  return result;
+}
+
 //bool test_EmployeeCCon();  //test the copy constructor of Employee
+inline
+bool test_EmployeeCCon() {
+  Employee employee1;
+  employee1.setEmail("test@mail");
+  Employee employee2(employee1);
+
+  return employee2.isEqual(employee1);
+}
+
 //bool test_EmployeeCAssign(); //test the copy assignment operator of Employee
+inline
+bool test_EmployeeCAssign() {
+  Employee employee1;
+  employee1.setEmail("test@mail");
+  Employee employee2 = employee1;
+
+  return employee2.isEqual(employee1);
+}
+
 //bool test_mixedArray(); //test the free-standing function mixedArray()
 
 }//end-of namespace NS_UTESTS
