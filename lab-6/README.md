@@ -1,5 +1,7 @@
 # FIX-ME
+
 ### Person.h, Person.cpp
+
 operator=()
 • Return type should be Person
 Person(const Person &clone) - copy constructor
@@ -7,6 +9,7 @@ Person(const Person &clone) - copy constructor
 
 # TO-DO
 ### Employee.h, Employee.cpp
+
 Write:
 • Employee(const Employee &clone) - copy constructor
 • getChangeRate(int i) const
@@ -14,5 +17,6 @@ Write:
 • deleteMixedArray(Person** &arrayPersonEmp, int size)
 
 ### UnitTests.h
+
 Write:
 • test_mixedArray()
