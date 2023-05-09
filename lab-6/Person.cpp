@@ -75,6 +75,7 @@ Person::Person(const Person &clone) {
   // Delete old placesVisited
   delete[] placesVisited;
   // Allocate space for new placesVisited
+  // FIX ME: Segmentation fault occuring here
   placesVisited = new std::string[clone.cntPlaces];
   placesVisited = clone.placesVisited;
 }
@@ -99,7 +100,7 @@ void Person::printObj() const {
             << "\nname: " << this->name
             << "\npersonalEmail: " << this->personalEmail
             << "\ncntPlaces: " << this->cntPlaces << std::endl;
-  // FIX ME: Segmentation fault occuring here
+ 
   for (int i = 0; i < this->cntPlaces; i++) {
     std::cout << i << ": " << this->placesVisited[i] << std::endl;
   }
