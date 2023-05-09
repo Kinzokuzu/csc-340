@@ -1,12 +1,5 @@
 # FIX-ME
 
-### Person.h, Person.cpp
-
-operator=()  
-• Return type should be Person  
-Person(const Person &clone) - copy constructor  
-• Segmentation fault occuring  
-
 # TO-DO
 ### Employee.h, Employee.cpp
 
