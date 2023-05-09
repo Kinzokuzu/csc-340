@@ -41,7 +41,7 @@ bool Employee::isEqual(const Employee &obj) {
   if (this->cnt_sal_changes != obj.cnt_sal_changes) {
     result = false;
   } else { // No need to compare is count isn't equal
-    for (int i = 0; i < this->cnt_sal_changes; i++) {
+    for (int i = 0; i < this->cnt_sal_changes && result == true; i++) {
       if (this->sal_change_rates[i] != obj.sal_change_rates[i])
         result = false;
       }
@@ -55,7 +55,7 @@ bool Employee::isEqual(const Employee &obj) {
 
 // Employee Employee::operator=(const Employee &rhs) {}
 
-// double Employee::getChangeRate(int i) const {}
+double Employee::getChangeRate(int i) const { return sal_change_rates[i]; }
 
 std::string Employee::getEmail() const { return work_email; }
 
@@ -64,6 +64,18 @@ void Employee::setEmail(std::string new_email) {
 }
 
 std::string Employee::getTypeOfObj() const { return "Employee"; }
+
+void Employee::printObj() {
+  this->Person::printObj();
+
+  std::cout << "work_email: " << this->work_email
+            << "\nsalaray: " << this->salary
+            << "\ncnt_sal_changes: " << this->cnt_sal_changes << std::endl;
+
+  for (int i = 0; i < cnt_sal_changes; i++) {
+    std::cout << i << ": " << this->sal_change_rates[i] << std::endl;
+  }
+}
 // End class Employee
 
 // void mixedArray(Person** &arrayPersonEmp, int numPersons, int numEmployees) {}

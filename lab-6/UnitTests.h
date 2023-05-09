@@ -41,7 +41,7 @@ bool test_PersonDCon() {
     result = false;
 
   // Checking each initialized place visited
-  for (int i = 0; i < person1.cntPlace; i++) {
+  for (int i = 0; i < person1.cntPlace && result == true; i++) {
     if (person1.placesVisited[i] != "unkown")
       result = false;
   }
@@ -85,7 +85,7 @@ bool test_EmployeeDCon() {
     result = false;
 
   // Checking each initialized sal_change_rate
-  for (int i = 0; i < employee1.cnt_sal_changes; i++) {
+  for (int i = 0; i < employee1.cnt_sal_changes && result == true; i++) {
     if (employee1.sal_change_rates[i] != 0.0)
       result = false;
   }

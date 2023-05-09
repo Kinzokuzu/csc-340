@@ -40,7 +40,7 @@ bool Person::isEqual(const Person &obj) {
   if (this->cntPlaces != obj.cntPlaces) {
     result = false;
   } else { // No need to compare if count isn't equal
-    for (int i = 0; i < this->cntPlaces; i++) {
+    for (int i = 0; i < this->cntPlaces && result == true; i++) {
       if (this->placesVisited[i] != obj.placesVisited[i])
         result = false;
     }
@@ -57,11 +57,15 @@ void Person::operator=(const Person& rhs) {
     personalEmail = rhs.personalEmail;
     cntPlaces = rhs.cntPlaces;
 
-    // Delete old placesVisited
-    delete[] placesVisited;
-    // Allocate space for new placesVisited
-    placesVisited = new std::string[rhs.cntPlaces];
-    placesVisited = rhs.placesVisited;
+    try {
+      // Delete old placesVisited
+      delete[] placesVisited;
+      // Allocate space for new placesVisited
+      placesVisited = new std::string[rhs.cntPlaces];
+      placesVisited = rhs.placesVisited;
+    } catch (std::bad_alloc e) {
+      std::cout << e.what() << std::endl;
+    }
   }
 }
 
@@ -72,11 +76,14 @@ Person::Person(const Person &clone) {
   personalEmail = clone.personalEmail;
   cntPlaces = clone.cntPlaces;
 
-  // Delete old placesVisited
-  delete[] placesVisited;
-  // Allocate space for new placesVisited
-  placesVisited = new std::string[clone.cntPlaces];
-  placesVisited = clone.placesVisited;
+  // FIX ME: Segmentation fault occuring here
+  try {
+    // Allocate space for new placesVisited
+    placesVisited = new std::string[clone.cntPlaces];
+    placesVisited = clone.placesVisited;
+  } catch (std::bad_alloc e) {
+    std::cout << e.what() << std::endl;
+  }
 }
 
 std::string Person::getPlace(int i ) const {
@@ -99,7 +106,7 @@ void Person::printObj() const {
             << "\nname: " << this->name
             << "\npersonalEmail: " << this->personalEmail
             << "\ncntPlaces: " << this->cntPlaces << std::endl;
-  // FIX ME: Segmentation fault occuring here
+
   for (int i = 0; i < this->cntPlaces; i++) {
     std::cout << i << ": " << this->placesVisited[i] << std::endl;
   }
