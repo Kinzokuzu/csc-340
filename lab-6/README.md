@@ -1,5 +1,5 @@
 # FIX-ME
 
 # TO-DO
-• Write test for mixedArray()
-• Upload to zybooks and continue further testing/debugging
+• Look at compiler warning in zyBooks  
+• Best submission so far 44/67
