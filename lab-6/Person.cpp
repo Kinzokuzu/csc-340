@@ -24,11 +24,15 @@ Person::Person() {
   name = "na";
   personalEmail = "personal@";
   cntPlaces = 10;
-  placesVisited = new std::string[cntPlaces];
-  
-  // Initialization of each place to "unknown"
-  for (int i = 0; i < cntPlaces; i++) {
-    placesVisited[i] = "unknown";
+  // Allocate memory for cntPlaces places
+  try {
+    placesVisited = new std::string[cntPlaces];
+    // Initialization of each place to "unknown"
+    for (int i = 0; i < cntPlaces; i++) {
+      placesVisited[i] = "unknown";
+    }
+  } catch (std::bad_alloc &e) {
+    std::cout << e.what() << std::endl;
   }
 }
 
@@ -82,7 +86,6 @@ Person::Person(const Person &clone) {
   personalEmail = clone.personalEmail;
   cntPlaces = clone.cntPlaces;
 
-  // FIX ME: Segmentation fault occurring here
   try {
     // Allocate space for new placesVisited
     placesVisited = new std::string[clone.cntPlaces];
@@ -108,6 +111,10 @@ void Person::setEmail(std::string new_email) {
 }
 
 std::string Person::getTypeOfObj() const { return "Person"; }
+
+int Person::getSSN() const { return SSN; }
+std::string Person::getName() const { return name; }
+int Person::getCntPlace() const { return cntPlaces; }
 
 void Person::printObj() const {
   std::cout << "SSN: " << this->SSN

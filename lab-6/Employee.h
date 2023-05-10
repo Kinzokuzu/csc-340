@@ -34,6 +34,9 @@ public:
     virtual string getEmail() const; //return work_email
     virtual void setEmail( string new_email); //new_email-->work_email
     virtual string getTypeOfObj() const; //return "Employee"
+
+    double getSalary() const;
+    int getCntSalChanges() const;
     
     void printObj();
 };

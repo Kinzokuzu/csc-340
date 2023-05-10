@@ -14,7 +14,7 @@
 namespace NS_UTESTS{
 using namespace NS_PersonEmployee;
 
-//Let's follow the CPP core guidline and implement each unit test as an inline
+//Let's follow the CPP core guideline and implement each unit test as an inline
 //function.
 //Here's an example:
 inline
@@ -31,18 +31,18 @@ bool test_PersonDCon() {
   bool result = true;
 
   Person person1;
-  if (person1.SSN != 0)
+  if (person1.getSSN() != 0)
     result = false;
-  if (person1.name != "na")
+  if (person1.getName() != "na")
     result = false;
-  if (person1.email != "personal@")
+  if (person1.getEmail() != "personal@")
     result = false;
-  if (person1.cntPlace != 10)
+  if (person1.getCntPlace() != 10)
     result = false;
 
   // Checking each initialized place visited
-  for (int i = 0; i < person1.cntPlace && result == true; i++) {
-    if (person1.placesVisited[i] != "unkown")
+  for (int i = 0; i < person1.getCntPlace() && result; i++) {
+    if (person1.getPlace(i) != "unknown")
       result = false;
   }
 
@@ -77,16 +77,16 @@ bool test_EmployeeDCon() {
   bool result = true;
 
   Employee employee1;
-  if (employee.work_email != "work@")
+  if (employee1.getEmail() != "work@")
     result = false;
-  if (employee.salary !- 0.0)
+  if (employee1.getSalary() != 0.0)
     result = false;
-  if (cnt_sal_changes != 10)
+  if (employee1.getCntSalChanges()!= 10)
     result = false;
 
   // Checking each initialized sal_change_rate
-  for (int i = 0; i < employee1.cnt_sal_changes && result == true; i++) {
-    if (employee1.sal_change_rates[i] != 0.0)
+  for (int i = 0; i < employee1.getCntSalChanges() && result; i++) {
+    if (employee1.getChangeRate(i) != 0.0)
       result = false;
   }
 
@@ -114,6 +114,11 @@ bool test_EmployeeCAssign() {
 }
 
 //bool test_mixedArray(); //test the free-standing function mixedArray()
+bool test_mixedArray() {
+  bool result = true;
+
+  return result;
+}
 
 }//end-of namespace NS_UTESTS
 

@@ -40,6 +40,10 @@ public:
     virtual void setEmail( string new_email); //new_email-->personalEmail
     virtual string getTypeOfObj() const; //return "Person"
 
+    int getSSN() const;
+    string getName() const;
+    int getCntPlace() const;
+
     virtual void printObj() const;
 
 private:
