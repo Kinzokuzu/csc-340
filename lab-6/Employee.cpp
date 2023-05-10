@@ -129,21 +129,20 @@ void Employee::printObj() {
 // End class Employee
 
 void mixedArray(Person** &arrayPersonEmp, int numPersons, int numEmployees) {
-  Person *person_array;
   try {
     // Allocate space for (numPersons + numEmployees) Person pointers
-    person_array = new Person[numPersons + numEmployees];
+    arrayPersonEmp = new (Person*[numPersons + numEmployees]);
     // Initialize numPersons Person objects
     for (int i = 0; i < numPersons; i++) {
-      person_array[i] = *new Person;
+      arrayPersonEmp[i] = new Person;
       // Set email
-      person_array[i].setEmail("personal@gmail.com");
+      arrayPersonEmp[i]->setEmail("personal@gmail.com");
     }
     // Initialize numEmployee Employee objects
     for (int i = numPersons; i < numEmployees; i++) {
-      person_array[i] = *new Employee;
+      arrayPersonEmp[i] = new Employee;
       // Set email
-      person_array[i].setEmail("work@gmail.com");
+      arrayPersonEmp[i]->setEmail("work@gmail.com");
     }
   } catch (std::bad_alloc &e) {
     std::cout << e.what() << std::endl;
