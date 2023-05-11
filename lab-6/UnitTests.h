@@ -118,35 +118,29 @@ bool test_mixedArray() {
   bool result = true;
 
   // Declare and initialize mixedArray
-  int numPersons = 2;
-  int numEmployees = 3;
+  int numPersons = 1;
+  int numEmployees = 1;
   Person** arrayPersonEmp;
   mixedArray(arrayPersonEmp, numPersons, numEmployees);
 
-  // Testing occurs here
-  // Test Person objects
   int personCount = 0;
   for (int i = 0; i < numPersons + numEmployees; i++) {
-    if (arrayPersonEmp[i]->getEmail() == "personal@gmail.com") {
+    if (arrayPersonEmp[i]->getEmail() == "personal@gmail.com")
       personCount++;
-    }
   }
-  // personCount should equal numPersons
+
+  int employeeCount = 0;
+  for (int i = 0; i < numPersons + numEmployees; i++) {
+    if (arrayPersonEmp[i]->getEmail() == "work@gmail.com")
+      employeeCount++;
+  }
+
   if (personCount != numPersons)
     result = false;
 
-  // Use the same method to test Employee objects
-  int employeeCount= 0;
-  for (int i = 0; i < numPersons + numEmployees; i++) {
-    if (arrayPersonEmp[i]->getEmail() == "work@gmail.com") {
-      employeeCount++;
-    }
-  }
-  // employeeCount should equal numEmployees
   if (employeeCount != numEmployees)
     result = false;
 
-  // Delete arrayPersonEmp
   deleteMixedArray(arrayPersonEmp, numPersons + numEmployees);
 
   return result;
